@@ -1,8 +1,10 @@
 {
   "dependencies": {
     "expo": "~39.0.0",
+    "i18next": "^19.8.3",
     "react": "~16.13.0",
     "react-dom": "~16.13.0",
+    "react-i18next": "^11.7.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
     "react-native-web": "0.13.13",
     "react-router-dom": "5.1.2",

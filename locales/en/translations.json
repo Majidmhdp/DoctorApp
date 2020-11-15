@@ -1,0 +1,28 @@
+{
+  "translation": {
+          "hello": "Hello world",
+          "change": "Change language",
+          "visits": {
+            "UNUSUAL_ACTIVITY": "سلاااام",
+            "FOR_USER": "For User:"
+          }
+        },
+    "visits": {
+      "UNUSUAL_ACTIVITY": "Unusual Activity",
+      "FOR_USER": "For User:"
+    },
+    "reports": {
+      "WEEKLY_REPORTS": "Weekly Reports",
+      "NEW_USER": "New User",
+      "RETURNING_USER": "Returning User",
+      "GROW": "Grow %",
+      "LAST_WEEK": "Last Week",
+      "THIS_WEEK": "This Week",
+      "CHANGE_PASSWORD": "Your Password Changed"
+    },
+    "announcements": {
+      "UNSUBSCRIBE": "Don't want to recive email from",
+      "UNSUBSCRIBE_TLT": "Unsubscribe"
+    }
+  }
+  
