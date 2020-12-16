@@ -11,6 +11,8 @@ import * as Font from 'expo-font';
 import { render } from "react-dom";
 import Home from './Home';
 import About from './About'
+import * as Localization from 'expo-localization'; // or whatever library you want
+import i18n from 'i18n-js'; // or whatever library you want
 
   //default start up language
   i18next.changeLanguage('fa');
@@ -20,16 +22,41 @@ import About from './About'
   });
   const Drawer = createDrawerNavigator();
   
+  export const LocalizationContext = React.createContext();
+  const [locale, setLocale] = React.useState(Localization.locale);
+const localizationContext = React.useMemo(
+  () => ({
+    t: (scope, options) => i18n.t(scope, { locale, ...options }),
+    locale,
+    setLocale,
+  }),
+  [locale]
+);
   
   export default function App() {
-  const { t, i18n } = useTranslation();
+    
+  // const { t, i18n } = useTranslation();
+   
+
+
       return (
-        <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Home">
-          <Drawer.Screen name="Home" component={Home} />
-          <Drawer.Screen name="About" component={About} />
-        </Drawer.Navigator>
-      </NavigationContainer>
+        <LocalizationContext.Provider value={localizationContext}>
+     <NavigationContainer>
+         <Drawer.Navigator initialRouteName="Home">
+           <Drawer.Screen name="Home" component={Home} />
+           <Drawer.Screen name="About" component={About} />
+         </Drawer.Navigator>
+       </NavigationContainer>
+        </LocalizationContext.Provider>
+           
+      //   <NavigationContainer>
+      //   <Drawer.Navigator initialRouteName="Home">
+      //     <Drawer.Screen name="Home" component={Home} />
+      //     <Drawer.Screen name="About" component={About} />
+      //   </Drawer.Navigator>
+      // </NavigationContainer>
+
+
         // const Tab = createBottomTabNavigator();
         // <NavigationContainer>
         // <Tab.Navigator>
