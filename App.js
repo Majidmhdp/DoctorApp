@@ -3,16 +3,14 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, Text, View, Platform, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Platform, TouchableOpacity, Screen } from "react-native";
 import i18next from './i18n';
 import { useTranslation } from 'react-i18next';
 import { Router, Route, Link } from "./react-router";
 import * as Font from 'expo-font';
 import { render } from "react-dom";
 import Home from './Home';
-import About from './About'
-import * as Localization from 'expo-localization'; // or whatever library you want
-import i18n from 'i18n-js'; // or whatever library you want
+import About from './About';
 
   //default start up language
   i18next.changeLanguage('fa');
@@ -21,40 +19,22 @@ import i18n from 'i18n-js'; // or whatever library you want
     'Yekan': require('./assets/fonts/iryekanregular.ttf'),
   });
   const Drawer = createDrawerNavigator();
-  
-  export const LocalizationContext = React.createContext();
-  const [locale, setLocale] = React.useState(Localization.locale);
-const localizationContext = React.useMemo(
-  () => ({
-    t: (scope, options) => i18n.t(scope, { locale, ...options }),
-    locale,
-    setLocale,
-  }),
-  [locale]
-);
-  
+
   export default function App() {
     
-  // const { t, i18n } = useTranslation();
-   
-
-
+  const { t, i18n } = useTranslation();
       return (
-        <LocalizationContext.Provider value={localizationContext}>
-     <NavigationContainer>
-         <Drawer.Navigator initialRouteName="Home">
-           <Drawer.Screen name="Home" component={Home} />
-           <Drawer.Screen name="About" component={About} />
-         </Drawer.Navigator>
-       </NavigationContainer>
-        </LocalizationContext.Provider>
-           
-      //   <NavigationContainer>
-      //   <Drawer.Navigator initialRouteName="Home">
-      //     <Drawer.Screen name="Home" component={Home} />
-      //     <Drawer.Screen name="About" component={About} />
-      //   </Drawer.Navigator>
-      // </NavigationContainer>
+<NavigationContainer>
+<Text style={{ fontFamily: 'Yekan' }}>{t('visits.UNUSUAL_ACTIVITY')}</Text>
+        <Drawer.Navigator initialRouteName="Home">
+
+        
+          <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen name="About" component={About} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+
+
 
 
         // const Tab = createBottomTabNavigator();
